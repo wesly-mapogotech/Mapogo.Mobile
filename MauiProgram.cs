@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Mapogo.Mobile.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Mapogo.Mobile
 {
@@ -18,7 +19,9 @@ namespace Mapogo.Mobile
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddSingleton<ConfigurationService>();
+            builder.Services.AddSingleton<AndroidThemeService>();
+            builder.Services.AddSingleton<SplashService>();
             return builder.Build();
         }
     }

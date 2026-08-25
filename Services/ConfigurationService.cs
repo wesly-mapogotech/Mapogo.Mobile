@@ -5,8 +5,7 @@ namespace Mapogo.Mobile.Services
 {
     public class ConfigurationService
     {
-        private const string ConfigUrl =
-            "https://mapogo.chat/mobile-config.json";
+        private const string ConfigUrl = "https://wesly-mapogotech.github.io/Pages/mapogo.json";
 
         public async Task<AppConfig> GetConfigAsync()
         {
@@ -32,3 +31,4 @@ namespace Mapogo.Mobile.Services
             }
         }
     }
+}
