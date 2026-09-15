@@ -29,8 +29,7 @@ namespace Mapogo.Mobile
         }
         private async void InitializeAsync()
         {
-            var config =
-                await _configurationService.GetConfigAsync();
+            var config = await _configurationService.GetConfigAsync();
             // 2. Apply Android theme
             _themeService.Apply(config);
             MainPage = new MainPage(config, _splashService);
