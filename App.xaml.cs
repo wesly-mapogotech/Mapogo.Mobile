@@ -14,8 +14,11 @@ namespace Mapogo.Mobile
             _configurationService = configurationService;
             _themeService = themeService;
             _splashService = splashService;
+        }
 
-            MainPage = new ContentPage
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            var loadingPage = new ContentPage
             {
                 Content = new ActivityIndicator
                 {
@@ -25,14 +28,19 @@ namespace Mapogo.Mobile
                 }
             };
 
-            InitializeAsync();
+            var window = new Window(loadingPage);
+
+            _ = InitializeAsync(window);
+
+            return window;
         }
-        private async void InitializeAsync()
+
+        private async Task InitializeAsync(Window window)
         {
             var config = await _configurationService.GetConfigAsync();
             // 2. Apply Android theme
             _themeService.Apply(config);
-            MainPage = new MainPage(config, _splashService);
+            window.Page = new MainPage(config, _splashService);
         }
     }
 }
